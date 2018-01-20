@@ -1,0 +1,67 @@
+::-webkit-input-placeholder {
+	font-style:italic;
+	font-size:13px;
+}
+:-moz-placeholder {
+	font-style:italic;
+	font-size:13px;
+}
+::-moz-placeholder {
+	font-style:italic;
+	font-size:13px;
+}
+:-ms-input-placeholder {
+	font-style:italic;
+	font-size:13px;
+}
+.ui-note{
+    font-size: 12px;
+}
+.ui-fa{
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.ui-fa.top1{margin-top: -1px;}
+.ui-fa.top2{margin-top: -2px;}
+.ui-fa.top3{margin-top: -3px;}
+
+.sidebar-menu span {
+	display: inline-block;
+}
+.sidebar-menu span.icon {
+	width: 22px;
+}
+
+.ui-default-lang {
+	padding-top: 8px;
+}
+.ui-head {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 15px;
+}
+.ui-table-highlight {
+	background-color: #fff2a8 !important;
+}
+.no-padding .no-padding-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.no-padding .no-padding-item:first-child {
+	padding-right:7px !important;
+}
+.no-padding .no-padding-item:last-child {
+	padding-left:7px !important;
+}
+.ui-process.input {
+	position: absolute;
+	right:25px;
+	top:10px;
+}
+.ui-icheck-text {
+    margin-left: 5px;
+}
+.ui-tab-pane {
+    padding-top: 12px;
+}

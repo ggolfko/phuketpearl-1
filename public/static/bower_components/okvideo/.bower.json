@@ -1,0 +1,21 @@
+{
+  "name": "okvideo",
+  "version": "2.3.3",
+  "homepage": "http://okfoc.us/okvideo",
+  "authors": [
+    "OKFocus"
+  ],
+  "description": "OKFocus, Internet Legends",
+  "private": true,
+  "dependencies": {},
+  "_release": "2.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.3.3",
+    "commit": "16ac29a8110b88987a9455f4138d772772195e42"
+  },
+  "_source": "https://github.com/okfocus/okvideo.git",
+  "_target": "^2.3.3",
+  "_originalSource": "okvideo",
+  "_direct": true
+}

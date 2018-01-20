@@ -1,0 +1,44 @@
+{
+  "name": "angular-tooltips",
+  "version": "1.1.0",
+  "description": "Angular.js tooltips module.",
+  "authors": [
+    "Filippo Oretti <filippo.oretti@gmail.com",
+    "Dario Andrei <wouldgo84@gmail.com>",
+    "720kb"
+  ],
+  "keywords": [
+    "tiptip",
+    "tooltip",
+    "tooltips",
+    "popover",
+    "angularjs",
+    "angular"
+  ],
+  "main": [
+    "./dist/angular-tooltips.min.js",
+    "./dist/angular-tooltips.min.css"
+  ],
+  "license": "MIT",
+  "homepage": "http://720kb.github.io/angular-tooltips",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.*.*"
+  },
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "eb0e247df74ab91401ff70d1357dcfe0bebf5981"
+  },
+  "_source": "https://github.com/720kb/angular-tooltips.git",
+  "_target": "^1.1.0",
+  "_originalSource": "angular-tooltips",
+  "_direct": true
+}

@@ -1,0 +1,117 @@
+html, body {
+    overflow-x: hidden;
+    background-color: #000;
+}
+
+.ui-working {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    background-color: #000;
+}
+.ui-working.xs {
+    padding-top: 70px !important;
+}
+.ui-working .head {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    margin-top: 15px;
+    text-align: center;
+}
+.ui-working .head .title {
+    position: absolute;
+    left: 0px;
+    top: -14px;
+    width: 100%;
+}
+.ui-working .head .title span {
+    padding: 0px 13px;
+    background-color: #000;
+    font-family: 'Gotham 4r', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: #f4f4f4;
+}
+.ui-working .head .line {
+    display: block;
+    border: none;
+    color: #fff;
+    height: 1px;
+    background: black;
+    background: gradient(radial, 50% 50%, 0, 50% 50%, 450, from(rgba(244,244,244,.7)), to(rgba(0,0,0,.7)));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 450, from(rgba(244,244,244,.7)), to(rgba(0,0,0,.7)));
+    background: -moz-gradient(radial, 50% 50%, 0, 50% 50%, 450, from(rgba(244,244,244,.7)), to(rgba(0,0,0,.7)));
+}
+.ui-working .wrapper {
+    position: relative;
+}
+.ui-working .wrapper h2 {
+    color: #fff;
+    font-size: 22.5px;
+    font-weight: 400;
+    font-family: 'Gotham 3r', sans-serif;
+    margin-bottom: 25px;
+}
+.ui-working .wrapper .hours {
+    position: relative;
+    color: #f4f4f4;
+    font-weight: 400;
+    font-family: 'Gotham 3r', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 15px;
+}
+.ui-working .wrapper .address {
+    position: relative;
+    color: #f4f4f4;
+    font-weight: 400;
+    font-family: 'Gotham 3r', sans-serif;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.ui-working .wrapper .map {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.ui-working .map-frame {
+	border: none;
+	position: relative;
+}
+
+.ui-working .ui-tour-random {
+
+}
+.ui-working .ui-tour-random .headline {
+    position: relative;
+    margin-bottom: 25px;
+    margin-top: 66px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.ui-working .ui-tour-random .headline .line {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid rgba(255,255,255,.2);
+}
+.ui-working .ui-tour-random .title-head {
+    position: absolute;
+    top: -15px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+}
+.ui-working .ui-tour-random .title-head span {
+    background-color: #000;
+    font-size: 17px;
+    font-family: 'Gotham 3r', sans-serif;
+    color: #f4f4f4;
+    padding: 0px 18px;
+}
+.ui-tour-random .item .info {
+    height: auto !important;
+}
