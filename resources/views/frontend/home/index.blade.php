@@ -410,6 +410,22 @@
 
 	</div>
 </div>
+<form action="{{$request->fullUrl()}}" method="post" class="hidden" id="checkoutForm">
+    @if('[[tour.price_type]]' == 'person')
+    <input type="hidden" name="adults" id="checkoutAdults">
+    <input type="hidden" name="children" id="checkoutChildren">
+    @elseif('[[tour.price_type]]' == 'package')
+    <input type="hidden" name="packages" id="checkoutPackages">
+	<input type="hidden" name="extra" id="checkoutExtra">
+	 @elseif('[[tour.price_type]]' == 'free')
+    <input type="hidden" name="adults" id="checkoutAdults">
+    <input type="hidden" name="children" id="checkoutChildren">
+    @endif
+    <input type="hidden" name="date" id="checkoutDate">
+	<input type="hidden" name="time" id="checkoutTime">
+    <input type="hidden" name="total" id="checkoutTotal">
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+</form>
 @endif 
 @if ($jewels->count() > 0)
 <div class="home-popular-collections">

@@ -14,7 +14,7 @@ use App\Certificate;
 
 class HomeController extends Controller {
 
-	public function getIndex()
+	public function getIndex(Request $request)
 	{
 		$tours			= Tour::where('publish', '1')->orderBy('created_at', 'desc')->take(4)->with(['extras'])->get();
 		$jewels			= Product::where('publish', '1')->orderByRaw("RAND()")->take(6)->get();
@@ -50,6 +50,7 @@ class HomeController extends Controller {
 			'name' => $this->config['name'],
 		];
 
+		$this->params['request'] = $request;
 		$this->params['jsonld']			= $jsonld;
 		$this->params['slides']			= $slides;
 		$this->params['cers']       = $cers;
