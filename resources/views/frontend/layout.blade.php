@@ -160,12 +160,21 @@
                         <a href="#" ng-click="$event.preventDefault()" ng-hide="navmenuTouch">{{trans('_.Jewels')}} <i class="fa fa-caret-down ui-caret" aria-hidden="true"></i></a>
                         <ul class="dropdown-menu dropdown-menu-left animated fadeInDown">
                         <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == 'pearlquality') class="active" @endif><a href="{{ $config['url'] }}/pearl-quality.html" rel="me" alt="{!! trans('_.Pearl Quality') !!}">{{trans('_.Pearl Quality')}}</a></li>
-                           
+                        
+
                         @foreach($categories as $index => $item)
-                            
+                        @php
+                            $category = App\Category::where('url', $item->url)->first(); 
+                            $items = $category->products()->leftJoin('products', 'product_maps.product_id', '=', 'products.id')->where('publish', '1')->orderBy('products.created_at', 'desc')->paginate(12);
+
+                        @endphp
+                                @foreach($items as $index => $map)
+                                {{-- */ $product = App\Product::find($map->product_id); /* --}}
+                        @if($product)
                             <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == $item->url) class="active" @endif><a href="{{ $config['url'] }}/jewels/{{$item->url}}" rel="me" alt="{!! $item->getTitle($config['lang']['code']) !!}">{{$item->getTitle($config['lang']['code'])}}</a></li>
-                            
+                           @endif
                             @endforeach
+                         @endforeach
                         </ul>
                     </li>
                     
