@@ -98,7 +98,7 @@ class TourController extends Controller {
 
 							$subject = $this->config['name'] . ' - ' . trans('book.Booking information');
 
-							Mail::queue('emails.tour.books.client', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
+                            Mail::queue('emails.tour.books.client', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
 	                            $mail->to($book->email, $book->firstname.' '.$book->lastname);
 								$mail->subject($subject);
 	                        });
@@ -106,7 +106,6 @@ class TourController extends Controller {
 							$subject = $this->config['name'] . ' - Tour booking';
 
 							Mail::queue('emails.tour.books.admin', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
-								$mail->from($book->email, $book->firstname.' '.$book->lastname);
 								$mail->to(config('app.email'));
 								$mail->subject($subject);
 	                        });

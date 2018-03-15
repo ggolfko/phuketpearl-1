@@ -51,6 +51,10 @@
 <script src="{{ $config['url'] }}/static/frontend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="{{ $config['url'] }}/static/frontend/bower_components/iCheck/icheck.min.js"></script>
 <script src="{{ $config['url'] }}/static/frontend/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+
 <!--[if lt IE 9]>
 <script src="{{ $config['url'] }}/static/crossbrowserjs/html5shiv.min.js"></script>
 <script src="{{ $config['url'] }}/static/crossbrowserjs/respond.min.js"></script>
@@ -72,47 +76,62 @@
     <!-- begin #header -->
     <div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-small" data-state-change="disabled">
 
-        <div class="container ui-top hidden-xs" id="ui-top">
+        <div class="container ui-top " id="ui-top">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ui-lang-flag">
-                        <div class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" onclick="event.preventDefault();">
-                                <img src="{{ $config['url'] }}/static/frontend/images/flags/{{$config['lang']['code']}}.png" alt="{{$config['lang']['title']}}">
-                            </a>
-                            <ul class="dropdown-menu pull-right popup">
-                                @foreach($config['langs'] as $lang)
-                                <li>
+
+                        <div class="lang">
+                            @foreach($config['langs'] as $lang)
+                                
                                     <a href="#" ng-click="lang($event,'{{$lang['code']}}')">
-                                        <img src="{{ $config['url'] }}/static/frontend/images/flags/{{$lang['code']}}.png" alt="{{$lang['title']}}"> <span>{{$lang['title']}}</span>
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
+                                        <img src="{{ $config['url'] }}/static/frontend/images/flags/{{$lang['code']}}.png" alt="{{$lang['title']}}">
+                                    </a>  
+                             @endforeach
                         </div>
+                       
                     </div>
-                    <div class="ui-social">
+
+
+                    <div class="ui-social  hidden-xs">
                         @if(trim($config['facebook']) != '')
-                        <a href="{{$config['facebook']}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{$config['facebook']}}" target="_blank"><i class="fab fa-facebook" style="color:#5CB3FF;"></i></a>
                         @endif
-                        @if(trim($config['instagram']) != '')
-                        <a href="{{$config['instagram']}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <!-- @if(trim($config['instagram']) != '')
+                        <a href="{{$config['instagram']}}" target="_blank"><i class="fab fa-instagram"style="color:#FFFFFF;"></i></a>
                         @endif
                         @if(trim($config['googleplus']) != '')
-                        <a href="{{$config['googleplus']}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{$config['googleplus']}}" target="_blank"><i class="fab fa-google-plus"style="color:#0000A0;"></i></a>
                         @endif
                         @if(trim($config['pinterest']) != '')
-                        <a href="{{$config['pinterest']}}" target="_blank"><i class="fa fa-pinterest"></i></a>
+                        <a href="{{$config['pinterest']}}" target="_blank"><i class="fab fa-pinterest"style="color:#0000A0;"></i></a>
                         @endif
                         @if(trim($config['youtube']) != '')
-                        <a href="{{$config['youtube']}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="{{$config['youtube']}}" target="_blank"><i class="fab fa-youtube-square"style="color:#FF0000;"></i></a>
+                        @endif -->
+                        @if(trim($config['viber']) != '')
+                        <a onclick="myFunctionSwalViber('{{$config['viber']}}')" target="_blank"><i class="fab fa-viber"style="color:#F433FF;"></i></a>
                         @endif
+                        @if(trim($config['whatapp']) != '')
+                        <a onclick="myFunctionSwalWhatapp('{{$config['whatapp']}}')" target="_blank"><i class="fab fa-whatsapp"style="color:#4CC552;"></i></a>
+                        @endif
+                        @if(trim($config['line']) != '')
+                        <a onclick="myFunctionSwalLine('{{$config['line']}}')" target="_blank"><i class="fab fa-line"style="color:#4CC552;"></i></a>
+                        @endif
+                        @if(trim($config['wechat']) != '')
+                        <a onclick="myFunctionSwalWechat('{{$config['wechat']}}')" target="_blank"><i class="fab fa-weixin"style="color:#4CC552;"></i></a>
+                        @endif
+
                     </div>
                     <div class="ui-top-info ui-email hidden-xs">
                         <a href="mailto:{{$top_email}}">{{$top_email}}</a>
                     </div>
-                    <div class="ui-top-info ui-phone hidden-xs">
+                    <div class="ui-top-info ui-phone  hidden-xs">
                         <a href="tel:{{$top_phone}}">{{$top_phone}}</a>
+                    </div>
+
+                    <div class="ui-top-info ui-phone  hidden-lg">
+                        <a href="tel:{{$top_phone}}">Tel: {{$top_phone}}</a>
                     </div>
                 </div>
             </div>
@@ -122,6 +141,7 @@
         <div class="container">
             <!-- begin navbar-header -->
             <div class="navbar-header">
+                
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -130,8 +150,15 @@
                 <a href="{{ $config['url'] }}/home" rel="me" alt="{!! trans('_.Home') !!}" class="navbar-brand">
                     <img src="{{ $config['url'] }}/static/images/logo-200-101.png" class="ui-logo-image">
                 </a>
+
+    
+
+                
             </div>
             <!-- end navbar-header -->
+          
+            
+            
             <!-- begin navbar-collapse -->
             <div class="collapse navbar-collapse" style="display: none !important;" id="header-navbar" ng-class="{'navbar-xs':screen == 'xs'}">
                 <ul class="nav navbar-nav navbar-right" @if($config['lang']['code'] == 'en') ng-class="{'en-sm':screen == 'sm'}" @endif>
@@ -155,11 +182,14 @@
                             <li @if(isset($menu) && $menu == 'ourpearlfarm' && isset($submenu) && $submenu == 'pearltype') class="active" @endif><a href="{{ $config['url'] }}/pearl-type.html" rel="me" alt="{!! trans('_.Type of pearl') !!}">{{trans('_.Type of pearl')}}</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown @if(isset($menu) && $menu == 'jewels') active @endif" ng-class="{'notouch':!navmenuTouch}">
+
+
+                
+                    <li class="hidden dropdown @if(isset($menu) && $menu == 'jewels') active @endif" ng-class="{'notouch':!navmenuTouch} ">
                         <a href="#" data-toggle="dropdown" ng-show="navmenuTouch">{{trans('_.Jewels')}} <i class="fa fa-caret-down ui-caret" aria-hidden="true"></i></a>
                         <a href="#" ng-click="$event.preventDefault()" ng-hide="navmenuTouch">{{trans('_.Jewels')}} <i class="fa fa-caret-down ui-caret" aria-hidden="true"></i></a>
                         <ul class="dropdown-menu dropdown-menu-left animated fadeInDown">
-                        <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == 'pearlquality') class="active" @endif><a href="{{ $config['url'] }}/pearl-quality.html" rel="me" alt="{!! trans('_.Pearl Quality') !!}">{{trans('_.Pearl Quality')}}</a></li>
+                        <!-- <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == 'pearlquality') class="active" @endif><a href="{{ $config['url'] }}/pearl-quality.html" rel="me" alt="{!! trans('_.Pearl Quality') !!}">{{trans('_.Pearl Quality')}}</a></li> -->
                         
 
                         @foreach($categories as $index => $item)
@@ -170,19 +200,20 @@
                         @endphp
                                 @foreach($items as $index => $map)
                                 {{-- */ $product = App\Product::find($map->product_id); /* --}}
-                        @if($product)
-                            <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == $item->url) class="active" @endif><a href="{{ $config['url'] }}/jewels/{{$item->url}}" rel="me" alt="{!! $item->getTitle($config['lang']['code']) !!}">{{$item->getTitle($config['lang']['code'])}}</a></li>
-                           @endif
-                            @endforeach
+                                    @if($product)
+                                    <li @if(isset($menu) && $menu == 'jewels' && isset($submenu) && $submenu == $item->url) class="active" @endif><a href="{{ $config['url'] }}/jewels/{{$item->url}}" rel="me" alt="{!! $item->getTitle($config['lang']['code']) !!}">{{$item->getTitle($config['lang']['code'])}}</a></li>
+                                    @endif
+                                @endforeach
                          @endforeach
                         </ul>
                     </li>
-                    
-
                    
-					<li class="location-hidden @if(isset($menu) && $menu == 'working' ) active @endif" ng-class="{'hidden': screen != 'lg' && browserName == 'safari'}"><a href="{{ $config['url'] }}/location-opening-hours.html" rel="me" alt="{!! trans('_.Location &amp;<br> Opening hours') !!}">{!!trans('_.Location &amp;<br> Opening hours')!!}</a></li>
 
+                    <li class="pearlquality-hidden @if(isset($menu) && $menu == 'pearlquality') active @endif"> <a href="{{ $config['url'] }}/pearl-quality.html" rel="me" alt="{!! trans('_.Pearl Quality') !!}">{{trans('_.Pearl Quality')}}</a></li>
+                    
                     <li class="new-hidden @if(isset($menu) && $menu == 'news' ) active @endif" ng-class="{'hidden': screen != 'lg' && browserName == 'safari'}"><a href="{{ $config['url'] }}/news.html" rel="me" alt="{!! trans('_.News') !!}">{{trans('_.News')}}</a></li>
+
+					<li class="location-hidden @if(isset($menu) && $menu == 'working' ) active @endif" ng-class="{'hidden': screen != 'lg' && browserName == 'safari'}"><a href="{{ $config['url'] }}/location-opening-hours.html" rel="me" alt="{!! trans('_.Location &amp;<br> Opening hours') !!}">{!!trans('_.Location &amp;<br> Opening hours')!!}</a></li>
 
 					<li class="tour-hidden @if(isset($menu) && $menu == 'tour') active @endif"> <a href="{{ $config['url'] }}/tours" rel="me" alt="{!! trans('_.Booking Tour') !!}">{{trans('_.Booking Tour')}}</a></li>
                     
@@ -231,22 +262,34 @@
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-12 item">
-                    <h3>{{trans('_.Follow Us')}}</h3>
+                    <h3><br></h3>
                     <ul class="social">
                         @if(trim($config['facebook']) != '')
-                        <li><a href="{{$config['facebook']}}" rel="me" alt="{{$config['facebook']}}" target="_blank"><i class="fa fa-facebook"></i>Facebook</a></li>
+                        <li><a href="{{$config['facebook']}}" rel="me" alt="{{$config['facebook']}}" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                         @endif
                         @if(trim($config['instagram']) != '')
-                        <li><a href="{{$config['instagram']}}" rel="me" alt="{{$config['instagram']}}" target="_blank"><i class="fa fa-instagram"></i>Instagram</a></li>
+                        <li><a href="{{$config['instagram']}}" rel="me" alt="{{$config['instagram']}}" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
                         @endif
                         @if(trim($config['googleplus']) != '')
-                        <li><a href="{{$config['googleplus']}}" rel="me" alt="{{$config['googleplus']}}" target="_blank"><i class="fa fa-google-plus"></i>Google+</a></li>
+                        <li><a href="{{$config['googleplus']}}" rel="me" alt="{{$config['googleplus']}}" target="_blank"><i class="fab fa-google-plus"></i> Google+</a></li>
                         @endif
                         @if(trim($config['pinterest']) != '')
-                        <li><a href="{{$config['pinterest']}}" rel="me" alt="{{$config['pinterest']}}" target="_blank"><i class="fa fa-pinterest"></i>Pinterest</a></li>
+                        <li><a href="{{$config['pinterest']}}" rel="me" alt="{{$config['pinterest']}}" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a></li>
                         @endif
                         @if(trim($config['youtube']) != '')
-                        <li><a href="{{$config['youtube']}}" rel="me" alt="{{$config['youtube']}}" target="_blank"><i class="fa fa-youtube"></i>Youtube</a></li>
+                        <li><a href="{{$config['youtube']}}" rel="me" alt="{{$config['youtube']}}" target="_blank"><i class="fab fa-youtube"></i> Youtube</a></li>
+                        @endif
+                        @if(trim($config['line']) != '')
+                        <li><a onclick="myFunctionSwalLine('{{$config['line']}}')" rel="me" alt="{{$config['line']}}" target="_blank"><i class="fab fa-line"></i> Line</a></li>
+                        @endif
+                        @if(trim($config['whatapp']) != '')
+                        <li><a onclick="myFunctionSwalWhatapp('{{$config['whatapp']}}')" rel="me" alt="{{$config['whatapp']}}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        @endif
+                        @if(trim($config['viber']) != '')
+                        <li><a onclick="myFunctionSwalViber('{{$config['viber']}}')" rel="me" alt="{{$config['viber']}}" ><i class="fab fa-viber "  ></i> Viber</a></li>
+                        @endif
+                        @if(trim($config['wechat']) != '')
+                        <li><a onclick="myFunctionSwalWechat('{{$config['wechat']}}')" rel="me" alt="{{$config['viber']}}" ><i class="fab fa-weixin"></i> WeChat</a></li>
                         @endif
                     </ul>
                 </div>
@@ -254,10 +297,10 @@
 		</div>
         <div class="container bottom">
             <div class="row">
-                <div class="col-sm-5 copyright">{{$config['copyright']}}</div>
+                <div class="col-sm-5 copyright"><p>{{$config['copyright']}}</p></div>
                 <div class="col-sm-7 menulist" ng-class="{'text-right':screen == 'lg' || screen == 'md' || screen == 'sm', 'right':screen == 'lg' || screen == 'md' || screen == 'sm', 'small':screen == 'xs'}">
                     <a href="{{ $config['url'] }}/pearl-care.html">{{trans('_.Pearl Care')}}</a>
-                    <a href="{{ $config['url'] }}/jewels">{{trans('_.Pearl Jewels')}}</a>
+                    <!-- <a href="{{ $config['url'] }}/jewels">{{trans('_.Pearl Jewels')}}</a> -->
                     <a href="{{ $config['url'] }}/pearl-farm.html">{{trans('_.Pearl Farm')}}</a>
                     <a href="{{ $config['url'] }}/tours">{{trans('_.Booking Tour')}}</a>
                     <a href="{{ $config['url'] }}/contactus.html">{{trans('_.Contact us')}}</a>
@@ -306,4 +349,76 @@
   ga('create', 'UA-97464406-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+<script>
+function myFunctionSwalLine(param) {
+
+    swal({
+        title: "LineID",
+        text: param,
+        icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAACJElEQVR42u2ZQY6DMAxFjVhkyRFyk3IxJJC4GNwkR2CZRYXnf5PONG01i9lgaWCBCLxFY33/2K7o79ciF3ABF/CvAcEVc6N3kUZnlWYb+Gp0BQTVe1Tdhphvgm89nrB0BiwyxLDqhG/YBamIrXgEyq1V8QvoLm3SdWtT7hF5fwD1kKnTsEOqUO79g2BOBiyzwroNP7cPqXcyUC7+bOghIfLjRxM7F9iR9HgeqYeiV1iWM2BVTeahapkFIMGoRldA0E2i3LopmgrgUVh6A0Q60wOViqAflnq8cwTAlJj59m3WsHdwg159AQg17JMqMCM1ywfqC1DGFr99ThAFldtNkiuP8gDwOvIdu6D5T7FOfwcApIDTaKFR7ZBqZo7p6gwwewoIcCwogp6rzHIA6HeZJGZPYqXds9M6AKS3rVAKlvkNfLWuQBwAViYhyq0iwHPCW7p95Q8uABMA0/9xzL+Y2PmANRQUQLIneBTatedz0wPAIx0VCFWwHgXdIHXq+QAE9vQoPjJ7Xlt6AngaqZVJ8HgzqlGrCsQDgMUkzPekRLPVSvU2zwdKycEAs/R8d3sngHAEgyhjhZ53s6UvQAtloS7tbqUHD4D1vFbGWX3MzKqnBx6AMj3oEGWjWGvC950ByzEdkjIxslpJa8E4AXgaHbXw8tYEeQEQZU02xaQ9pXrK6gGwKSubNAAtd6GavQGWWQDKLejriMMDcP3BcQEXcAF/Ab4AyRjZEsAVtFEAAAAASUVORK5CYII=",
+        }).then(function() {
+        // Redirect the user
+        //window.location.href = url;
+        
+     });
+}
+</script>
+
+<script>
+function myFunctionSwalWhatapp(param) {
+
+        var span = document.createElement("span");
+        span.innerHTML=param,
+
+        swal({
+        title: "WhatsApp",
+        content: span,
+         }).then(function() {
+        // Redirect the user
+        //window.location.href = url;
+        
+     });
+}
+</script>
+
+<script>
+function myFunctionSwalViber(param) {
+    var span = document.createElement("span");
+        span.innerHTML=param,
+
+    swal({
+        title: "Viber",
+        content: span,
+        }).then(function() {
+        // Redirect the user
+        //window.location.href = url;
+        
+
+     });
+}
+</script>
+
+<script>
+function myFunctionSwalWechat(param) {
+    var span = document.createElement("span");
+        span.innerHTML=param,
+
+    swal({
+        title: "WeChat",
+        content: span,
+        }).then(function() {
+        // Redirect the user
+        //window.location.href = url;
+        
+
+     });
+}
+</script>
+
+
+
+
 </body></html>

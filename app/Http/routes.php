@@ -341,10 +341,12 @@ Route::group(['middleware' => 'web'], function($route){
 
 	//ajax
 	$route->group(['prefix' => 'ajax'], function($route){
-		$route->post('lang', 'AjaxController@postLang');
+        $route->post('lang', 'AjaxController@postLang');
+
         $route->group(['prefix' => 'docs'], function($route){
             $route->get('tour-terms.html', 'DocController@getTourTerms');
         });
+
         $route->group(['prefix' => 'tours'], function($route){
             $route->post('booking', 'TourController@ajaxPostBooking');
         });

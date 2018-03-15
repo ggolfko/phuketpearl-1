@@ -96,7 +96,7 @@ class PearlController extends Controller {
 
         $this->params['items']      = $items;
         $this->params['title']      = trans('_.Pearl Quality').' - '.$this->config['name'];
-        $this->params['menu']       = 'jewels';
+        $this->params['menu']       = 'pearlquality';
         $this->params['submenu']    = 'pearlquality';
 
         return view('frontend.pearl.quality', $this->params);

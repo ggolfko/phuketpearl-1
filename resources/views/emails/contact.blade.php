@@ -82,7 +82,7 @@ background-color: #f6f6f6;
         							</tr>
 									<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="color: #222; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 8px 0 0 0; border-top: 1px solid #e9e9e9 !important;" valign="top">
-											{{$firstname}} {{$lastname}}, &nbsp;{{$phone}}
+											{{$firstname}} {{$lastname}}, &nbsp;{{$email}} &nbsp;{{$phone}}
         								</td>
         							</tr>
                                 </table>

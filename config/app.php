@@ -14,7 +14,8 @@ return [
 		   'code'	=> 'th',
 		   'title'	=> 'ภาษาไทย',
 		   'locale'	=> 'th_th'
-	   ]
+       ]
+
 	],
 
 	'email' => 'pearlofphuket@gmail.com',
@@ -56,7 +57,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://phuketpearl.com'),
 
     /*
     |--------------------------------------------------------------------------

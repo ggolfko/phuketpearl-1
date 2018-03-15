@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.zoho.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'email@phuketpearl.com', 'name' => 'Phuket Pearl'],
+    'from' => ['address' => 'support@phuketpearl.com', 'name' => 'Phuket Pearl'],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'postmaster@phuketpearl.com'),
+    'username' => env('MAIL_USERNAME', 'support@phuketpearl.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD', 'b546455ffd5c7178b50ae704266c9a41'),
+    'password' => env('MAIL_PASSWORD', 'rLGm8dkq'),
 
     /*
     |--------------------------------------------------------------------------

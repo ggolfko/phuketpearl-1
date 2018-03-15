@@ -84,7 +84,7 @@ return array(
     'Allowed only "jpeg, jpg, gif, png" file extension only.' => 'อนุญาตเฉพาะไฟล์นามสกุล "jpg, jpeg, gif, png" เท่านั้น',
     'Visit Us' => 'ติดต่อสอบถาม',
     'Customer Care' => 'การดูแล',
-    'Jewels' => 'รัตนากร',
+    'Jewels' => 'ผลิตภัณฑ์',
     'Pearl Farm' => 'ฟาร์มไข่มุก',
     'Company' => 'เกี่ยวกับเรา',
     'Home' => 'หน้าแรก',
@@ -168,7 +168,7 @@ return array(
     'Type of pearl' => 'ประเภทของไข่มุก',
     'Our story' => 'ประวัติความเป็นมา',
     'Awards & Certificates' => 'รางวัล ใบประกาศนียบัตร',
-    'Pearl Jewels' => 'อัญมณีไข่มุก',
+    'Pearl Jewels' => 'ผลิตภัณฑ์',
     'Follow Us' => 'ติดตามเรา',
     'Remove' => 'ลบ',
     'OK' => 'ตกลง',
@@ -219,5 +219,33 @@ return array(
 
 	'TABLE_SHOWING' => 'กำลังแสดง :showing ถึง :to จาก :of รายการ|กำลังแสดง :showing ถึง :to จาก :of รายการ',
 	'PERSON_LOWERCASE' => 'คน|คน',
-	'JS_DISABLED' => 'We\'re sorry, but the website doesn\'t work properly without JavaScript enabled. If you can\'t enable JavaScript try visiting the website',
+    'JS_DISABLED' => 'We\'re sorry, but the website doesn\'t work properly without JavaScript enabled. If you can\'t enable JavaScript try visiting the website',
+
+    
+    'Includes:' => 'รวม:',
+    'Free choice of your selection transportation schedule' =>'ตารางเวลาที่ยืดหยุ่น สามารถเลือกช่วงเวลาได้ตามที่ท่านสะดวก',
+    'Transport to and from your Phuket accommodation'=> 'รถรับส่งจากที่พักภายในภูเก็ต',
+    'Private Long Tail boat transport' =>'ค่าเดินทางเรือหางยาวแบบส่วนตัว',
+    'Guided Tour' => 'ไกด์',
+    'Snack Set' => 'ชุดอาหารว่าง',
+    'Phuket Pearl souvenir' =>'ของที่ระลึกจาก "Phuket Pearl" ',
+    'Insurance' => 'ประกันอุบัติเหตุ',
+    'Long Tail boat transfer' => 'ค่าเดินทางเรือหางยาว',
+    'High Tea Set' =>'อาหารว่าง "High Tea Set" ',
+
+    'Buddle ticket' => 'Buddle ticket',
+    'Extra visitors' => 'Extra visitors',
+    'FREE SHUTTLE' => 'FREE SHUTTLE',
+    'Free Transfer' => 'ฟรีบริการรถรับส่ง',
+    'Maximum' => 'Maximum',
+    'Guests' =>'Guests',
+    'TH฿/group ticket (max. 3 people)'=>'บาท/ตั๋วกรุ๊ป (สำหรับ 3 ท่าน)',
+    'See More Information'=>'ข้อมูลเพิ่มเติม',
+    'TH฿' =>'บาท',
+    'Guided about pearls' =>'Guided about pearls',
+    'Find out our boutique and showroom.' =>'Find out our boutique and showroom.',
+    'Private Transport to and from your Phuket accommodation'=> 'รถส่วนตัวรับส่งจากที่พักภายในภูเก็ต',
+    'TH฿/ticket' => 'บาท/ท่าน',
+
+
 );

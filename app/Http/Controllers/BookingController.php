@@ -31,8 +31,7 @@ class BookingController extends Controller {
 
 				$subject = $this->config['name'] . ' - Payment completed';
 
-				Mail::queue('emails.books.inform_admin', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
-					$mail->from($book->email, $book->firstname.' '.$book->lastname);
+                Mail::queue('emails.books.inform_admin', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
 					$mail->to(config('mail.from')['address']);
 					$mail->subject($subject);
 				});
@@ -99,8 +98,7 @@ class BookingController extends Controller {
 
 								$subject = $this->config['name'] . ' - Payment completed';
 
-								Mail::queue('emails.books.inform_admin', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
-		                            $mail->from($book->email, $book->firstname.' '.$book->lastname);
+                                Mail::queue('emails.books.inform_admin', ['book' => $book, 'config' => $this->config], function($mail) use ($book, $subject){
 									$mail->to(config('mail.from')['address']);
 									$mail->subject($subject);
 		                        });

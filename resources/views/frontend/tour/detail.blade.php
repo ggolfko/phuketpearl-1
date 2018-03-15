@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="time">
-                    <a href="{{ $config['url'] }}/tours"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+                    <a href="{{ $config['url'] }}/tours"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     Updated at {{$tour->updated_at->format('l, F d Y h:i A')}}
                 </div>
 
@@ -188,7 +188,7 @@
                     @if($tour->price_type == 'package')
                     <div class="row price-type @if($config['lang']['code'] == 'th') th @endif">
 						<div class="col-xs-12">
-							{{number_format($tour->price_package)}} THB/{{trans('tour.bundle ticket')}} ({{(intval($tour->number_package_adult)+intval($tour->number_package_child))}} {{trans('tour.passes')}})
+							{{number_format($tour->price_package)}}{{trans('_.TH฿')}}/{{trans('tour.bundle ticket')}} ({{(intval($tour->number_package_adult)+intval($tour->number_package_child))}} {{trans('tour.passes')}})
 						</div>
                     </div>
 					<div class="row form @if($config['lang']['code'] == 'th') th @endif">
@@ -275,7 +275,7 @@
                     @elseif($tour->price_type == 'person')
 					<div class="row price-type @if($config['lang']['code'] == 'th') th @endif">
                         <div class="col-xs-2">{{trans('tour.Price')}}</div>
-						<div class="col-xs-10 text-right">{{number_format($tour->price_person_adult)}} THB/{{trans('tour.single ticket')}}</div>
+						<div class="col-xs-10 text-right">{{number_format($tour->price_person_adult)}} {{trans('_.TH฿')}}/{{trans('tour.single ticket')}}</div>
                     </div>
                     <div class="row describe @if($config['lang']['code'] == 'th') th @endif">
                         <div class="col-xs-6">{{trans('_.Adult')}}</div>

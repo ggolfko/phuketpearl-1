@@ -39,8 +39,7 @@ class ContactController extends Controller {
 
 			$subject = $this->config['name'] . ' - Contact message';
 
-			$sent = Mail::send('emails.contact', $data, function($mail) use ($data, $subject){
-				$mail->from($data['email'], "{$data['firstname']} {$data['lastname']}");
+            $sent = Mail::send('emails.contact', $data, function($mail) use ($data, $subject){
 				$mail->to(config('app.email'));
 				$mail->subject($subject);
 			});

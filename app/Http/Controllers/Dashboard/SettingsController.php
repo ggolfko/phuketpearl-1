@@ -255,8 +255,13 @@ class SettingsController extends Controller {
 			else if ($property == 'opening')
 			{
 				$config = \App\Config::where('property', 'opening_hours')->first();
+				$data	= [];
+				foreach ($value as $item)
+				{
+					$data[$item['locale']] = trim($item['data']);
+				}
 
-				$config->value = trim($value);
+				$config->value = json_encode($data);
 
 				if ($config->save())
 				{
@@ -275,7 +280,7 @@ class SettingsController extends Controller {
 					$data[$item['locale']] = trim($item['data']);
 				}
 
-				$config->value = json_encode($data);
+				$config->value = $config->value = json_encode($data);($data);
 
 				if ($config->save())
 				{
@@ -361,6 +366,60 @@ class SettingsController extends Controller {
 					$response['message']	= 'success';
 				}
 			}
+			//line
+			else if ($property == 'line')
+			{
+				$config = \App\Config::where('property', 'social_line')->first();
+
+				$config->value = trim($value);
+
+				if ($config->save())
+				{
+					$response['status']		= 'ok';
+					$response['message']	= 'success';
+				}
+			}
+			//viber
+			else if ($property == 'viber')
+			{
+				$config = \App\Config::where('property', 'social_viber')->first();
+
+				$config->value = trim($value);
+
+				if ($config->save())
+				{
+					$response['status']		= 'ok';
+					$response['message']	= 'success';
+				}
+			}
+
+			//Wechat
+			else if ($property == 'wechat')
+			{
+				$config = \App\Config::where('property', 'social_wechat')->first();
+
+				$config->value = trim($value);
+
+				if ($config->save())
+				{
+					$response['status']		= 'ok';
+					$response['message']	= 'success';
+				}
+			}
+			//whatapp
+			else if ($property == 'whatapp')
+			{
+				$config = \App\Config::where('property', 'social_whatapp')->first();
+
+				$config->value = trim($value);
+
+				if ($config->save())
+				{
+					$response['status']		= 'ok';
+					$response['message']	= 'success';
+				}
+			}
+
 			//facebook app id
 			else if ($property == 'fb_appid' && $value && trim($value) != '')
 			{
@@ -440,6 +499,7 @@ class SettingsController extends Controller {
 		$fb_title		= Config::where('property', 'fb_title')->first()->value;
 		$fb_description	= Config::where('property', 'fb_description')->first()->value;
 		$fb_image		= Config::where('property', 'fb_image')->first()->value;
+		$line			= Config::where('property', 'social_line')->first()->value;
 
         $this->params['opening_hours']	= $opening_hours;
         $this->params['map']			= json_decode($map);

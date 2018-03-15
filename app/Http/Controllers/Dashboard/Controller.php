@@ -44,6 +44,10 @@ class Controller extends BaseController
 		$this->config['pinterest']	= $settings->where('property', 'social_pinterest')->first()->value;
 		$this->config['googleplus']	= $settings->where('property', 'social_googleplus')->first()->value;
 		$this->config['youtube']	= $settings->where('property', 'social_youtube')->first()->value;
+		$this->config['line']		= $settings->where('property', 'social_line')->first()->value;
+		$this->config['whatapp']	= $settings->where('property', 'social_whatapp')->first()->value;
+		$this->config['wechat']		= $settings->where('property', 'social_wechat')->first()->value;
+		$this->config['viber']		= $settings->where('property', 'social_viber')->first()->value;
 		$this->config['url']		= $request->root();
 
 		//langs

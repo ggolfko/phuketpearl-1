@@ -606,6 +606,83 @@
 							</div>
 						</form>
 
+						<hr>
+
+						<form ng-controller="line" ng-submit="execute($event)" class="form-horizontal tasi-form">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">Line</label>
+	                            <div class="col-sm-9">
+	                                <div class="input-group">
+										<input ng-model="input" ng-disabled="doing" type="text" class="form-control" placeholder="({{trans('_.optional')}})">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-danger" ng-disabled="doing">
+												<i class="fa fa-save"></i>
+												[[doing? '{{trans('_.Saving...')}}': '{{trans('_.Save')}}']]
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<hr>
+
+						<form ng-controller="whatapp" ng-submit="execute($event)" class="form-horizontal tasi-form">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">Whatapp</label>
+	                            <div class="col-sm-9">
+	                                <div class="input-group">
+										<input ng-model="input" ng-disabled="doing" type="text" class="form-control" placeholder="({{trans('_.optional')}})">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-danger" ng-disabled="doing">
+												<i class="fa fa-save"></i>
+												[[doing? '{{trans('_.Saving...')}}': '{{trans('_.Save')}}']]
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<hr>
+
+						<form ng-controller="viber" ng-submit="execute($event)" class="form-horizontal tasi-form">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">Viber</label>
+	                            <div class="col-sm-9">
+	                                <div class="input-group">
+										<input ng-model="input" ng-disabled="doing" type="text" class="form-control" placeholder="({{trans('_.optional')}})">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-danger" ng-disabled="doing">
+												<i class="fa fa-save"></i>
+												[[doing? '{{trans('_.Saving...')}}': '{{trans('_.Save')}}']]
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<hr>
+
+						<form ng-controller="wechat" ng-submit="execute($event)" class="form-horizontal tasi-form">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">WeChat</label>
+	                            <div class="col-sm-9">
+	                                <div class="input-group">
+										<input ng-model="input" ng-disabled="doing" type="text" class="form-control" placeholder="({{trans('_.optional')}})">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-danger" ng-disabled="doing">
+												<i class="fa fa-save"></i>
+												[[doing? '{{trans('_.Saving...')}}': '{{trans('_.Save')}}']]
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</form>
+
+
                     </div>
                 </section>
             </div>
@@ -1237,6 +1314,89 @@ app.controller('twitter', function($scope){
 	}
 });
 
+//line
+app.controller('line', function($scope){
+	$scope.input = '{{ $config['line'] }}';
+
+	$scope.execute = function($event){
+		$scope.doing = true;
+
+		var data = $scope.input? $scope.input.trim(): '';
+
+		$scope.update('line', data, function(resp){
+			$scope.doing = false;
+
+			if (resp.status == 'ok'){
+				$scope.alert.success('{{trans('_.The operation is completed.')}} {{trans('_.Save changes successfully.')}}');
+			}
+			else {
+				$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+			}
+		}, function(){
+			$scope.doing = false;
+			$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+		});
+
+		$event.preventDefault();
+	}
+});
+
+//whatapp
+app.controller('whatapp', function($scope){
+	$scope.input = '{{ $config['whatapp'] }}';
+
+	$scope.execute = function($event){
+		$scope.doing = true;
+
+		var data = $scope.input? $scope.input.trim(): '';
+
+		$scope.update('whatapp', data, function(resp){
+			$scope.doing = false;
+
+			if (resp.status == 'ok'){
+				$scope.alert.success('{{trans('_.The operation is completed.')}} {{trans('_.Save changes successfully.')}}');
+			}
+			else {
+				$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+			}
+		}, function(){
+			$scope.doing = false;
+			$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+		});
+
+		$event.preventDefault();
+	}
+});
+
+//viber
+app.controller('viber', function($scope){
+	$scope.input = '{{ $config['viber'] }}';
+
+	$scope.execute = function($event){
+		$scope.doing = true;
+
+		var data = $scope.input? $scope.input.trim(): '';
+
+		$scope.update('viber', data, function(resp){
+			$scope.doing = false;
+
+			if (resp.status == 'ok'){
+				$scope.alert.success('{{trans('_.The operation is completed.')}} {{trans('_.Save changes successfully.')}}');
+			}
+			else {
+				$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+			}
+		}, function(){
+			$scope.doing = false;
+			$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+		});
+
+		$event.preventDefault();
+	}
+});
+
+
+
 //facebook
 app.controller('facebook', function($scope){
 	$scope.input = '{{ $config['facebook'] }}';
@@ -1247,6 +1407,33 @@ app.controller('facebook', function($scope){
 		var data = $scope.input? $scope.input.trim(): '';
 
 		$scope.update('facebook', data, function(resp){
+			$scope.doing = false;
+
+			if (resp.status == 'ok'){
+				$scope.alert.success('{{trans('_.The operation is completed.')}} {{trans('_.Save changes successfully.')}}');
+			}
+			else {
+				$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+			}
+		}, function(){
+			$scope.doing = false;
+			$scope.alert.error('{{trans('error.notcompleted')}} {{trans('error.general')}}');
+		});
+
+		$event.preventDefault();
+	}
+});
+
+//wechat
+app.controller('wechat', function($scope){
+	$scope.input = '{{ $config['wechat'] }}';
+
+	$scope.execute = function($event){
+		$scope.doing = true;
+
+		var data = $scope.input? $scope.input.trim(): '';
+
+		$scope.update('wechat', data, function(resp){
 			$scope.doing = false;
 
 			if (resp.status == 'ok'){
@@ -1338,6 +1525,10 @@ app.controller('opening', function($scope){
 		$scope.doing = true;
 
 		var data = $scope.input? $scope.input.trim(): '';
+
+
+
+
 
 		$scope.update('opening', data, function(resp){
 			$scope.doing = false;

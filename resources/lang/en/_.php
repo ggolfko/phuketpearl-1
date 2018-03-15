@@ -89,7 +89,7 @@ return array(
     'Company' => 'Company',
     'Home' => 'Home',
     'Video' => 'Video',
-    'Sign up with us to receive product news, events and offers interesting and special.' => 'Sign up with us to receive product news, events and offers interesting and special.',
+    'Sign up with us to receive product news, events and offers interesting and special.' => 'Join us to receive product news, events and offers interesting and special.',
     'Join our newsletter' => 'Join our newsletter',
     'Contact Us' => 'Contact Us',
     'Your email address' => 'Your email address',
@@ -220,28 +220,32 @@ return array(
 	'TABLE_SHOWING' => 'Showing :showing to :to of :of entry|Showing :showing to :to of :of entries',
 	'PERSON_LOWERCASE' => 'person|people',
     'JS_DISABLED' => 'We\'re sorry, but the website doesn\'t work properly without JavaScript enabled. If you can\'t enable JavaScript try visiting the website',
+    
+    
     'Includes:' => 'Includes:',
     'Free choice of your selection transportation schedule' =>'Free choice of your selection transportation schedule',
     'Transport to and from your Phuket accommodation'=> 'Transport to and from your Phuket accommodation',
+    'Private Transport to and from your Phuket accommodation'=> 'Private Transport to and from your Phuket accommodation',
     'Private Long Tail boat transport' =>'Private Long Tail boat transport',
     'Guided Tour' => 'Guided Tour',
-    'Snack Pack' => 'Snack Pack',
+    'Snack Set' => 'Snack Set',
     'Phuket Pearl souvenir' =>'Phuket Pearl souvenir',
     'Insurance' => 'Insurance',
     'Long Tail boat transfer' => 'Long Tail boat transfer',
-
-
+    
+    'High Tea Set' =>'High Tea Set',
     'Buddle ticket' => 'Buddle ticket',
     'Extra visitors' => 'Extra visitors',
     'FREE SHUTTLE' => 'FREE SHUTTLE',
     'Free Transfer' => 'Free Transfer',
     'Maximum' => 'Maximum',
     'Guests' =>'Guests',
-    'THB/bundle ticket (3 passes)'=>'THB/bundle ticket (3 passes)',
+    'TH฿/group ticket (max. 3 people)'=>'TH฿/group ticket (max. 3 people)',
     'See More Information'=>'See More Information',
-    'THB' =>'THB',
+    'TH฿' =>'TH฿',
     'Guided about pearls' =>'Guided about pearls',
     'Find out our boutique and showroom.' =>'Find out our boutique and showroom.',
+    'TH฿/ticket' => 'TH฿/ticket',
 
 
 );

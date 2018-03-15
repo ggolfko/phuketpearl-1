@@ -7,93 +7,56 @@
 <link href="{{ $config['url'] }}/static/frontend/css/home.css?_t=1705092117" rel="stylesheet" type="text/css" media="all"> @endsection @section('content')
 <link href="{{ $config['url'] }}/static/bower_components/opentip/css/opentip.css" rel="stylesheet" type="text/css">
 
-<div class="home-slider-wrapper">
-	<div class="camera_wrap __loading" id="home-slider">
-		@foreach($slides as $slide)
-		<?php
-			if ($slide->link_set == '1'){
-				$link = ($slide->link_internal == '1')? $config['url'] . $slide->link: $slide->link;
-			}
-			else {
-				$link = '';
-			}
-		?>
-			<div data-src="/app/slide/{{$slide->slideid}}/{{$slide->imageid}}.png" data-link="{{$link}}"></div>
-			@endforeach()
+
+<div class="hidden-xs">
+	<div class="home-slider-wrapper">
+		<div class="camera_wrap __loading" id="home-slider">
+			@foreach($slides as $slide)
+			<?php
+				if ($slide->link_set == '1'){
+					$link = ($slide->link_internal == '1')? $config['url'] . $slide->link: $slide->link;
+				}
+				else {
+					$link = '';
+				}
+			?>
+				<div data-src="/app/slide/{{$slide->slideid}}/{{$slide->imageid}}.png" data-link="{{$link}}"></div>
+				@endforeach()
+		</div>
 	</div>
 </div>
-
 <div class="clearfix"></div>
 
-<div class="home-banner-wrapper">
-	<div class="container">
-		<div id="home-banner" class="text-center clearfix">
-			<img class="pulse img-banner-caption" src="/static/images/logo-200-100.png" alt="With more than 40 years of experience on pearl farming. The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.">
-			<div class="home-banner-caption">
-				<p style="color: #000000;">
-					With more than 40 years of experience on pearl farming.
-					<br> The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.
-				</p>
+	<div class="home-banner-wrapper">
+		<div class="container">
+			<div id="home-banner" class="text-center clearfix">
+				<img class="pulse img-banner-caption" src="/static/images/logo-200-100.png" alt="With more than 40 years of experience on pearl farming. The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.">
+				<div class="home-banner-caption">
+					<p style="color: #000000;">
+						With more than 40 years of experience on pearl farming.
+						<br> The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-@if($awards->count() > 0 || $cers->count() > 0)
-<div class="home-popular-awards">
-	<div class="container">
-		<div class="group_home_collections row">
-			<div class="col-xs-12 text-center">
-				<div class="__head __light">
-					<div class="__title {{$config['lang']['code']}}">{{trans('_.Awards & Certificates')}}</div>
-					<img src="/static/images/home_line.png">
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="home_awards hidden">
-					<div id="home_awards">
-						@foreach($awards as $award)
-						<?php $title_ = $award->getTitle($config['lang']['code']) ?>
-						<div class="home_awards_item">
-							<div class="home_awards_item_inner">
-								<div class="award-details">
-									<img src="/app/award/{{$award->awardid}}/{{$award->imageid}}_t.png" alt="{{$title_}}">
-								</div>
-							</div>
-							<div class="hover-overlay">
-								<span class="col-name">
-									<a href="" rel="me" alt="{{$title_}}">{{$title_}}</a>
-								</span>
-							</div>
-						</div>
-						@endforeach @foreach($cers as $cer)
-						<?php $title_ = $cer->getTitle($config['lang']['code']) ?>
-						<div class="home_awards_item">
-							<div class="home_awards_item_inner">
-								<div class="award-details">
-									<img src="/app/certificate/{{$cer->certificateid}}/{{$cer->imageid}}_t.png" alt="{{$title_}}">
-								</div>
-							</div>
-							<div class="hover-overlay">
-								<span class="col-name">
-									<a href="" rel="me" alt="{{$title_}}">{{$title_}}</a>
-								</span>
-							</div>
-						</div>
-						@endforeach
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	
+<div class="award">
+	<img src="/static/frontend/images/home/award.jpg">
 </div>
-@endif @if($tours->count() > 0)
+			
+
+
+ @if($tours->count() > 0)
 <div class="tour-widget" ng-controller="TourWidget">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6">
 				<div class="booking-box">
-					<h3>- Tour Booking -</h3>
+					<h3>- Booking Tour -</h3>
 					<div class="row packages @if($config['lang']['code'] == 'th') th @endif">
 						<div class="col-xs-12">
 							<select ng-model="input.tour" ng-change="changed()" class="form-control">
@@ -108,13 +71,19 @@
 
 
 					<div ng-if="tour && tour.price_type == 'person'" class="row detail @if($config['lang']['code'] == 'th') th @endif">
-						<div class="col-xs-5"><h4>{{trans('_.Adult')}}</h4></div>
-						<div class="col-xs-7"><h4>[[ tour.price_person_adult | number:2 ]] THB/single ticket  </h4></div>
-						<div class="col-xs-5"><h4>{{trans('_.Child')}} {{trans('tour.(Age 5-11)')}}</h4></div>
-						<div class="col-xs-7"><h4>[[ tour.price_person_child | number:2 ]] THB/single ticket</h4></div>
+						<div class="col-xs-12">
+						<div class="col-xs-6"><h4>{{trans('_.Adult')}}</h4></div>
+						<div class="col-xs-6"><h4>[[ tour.price_person_adult]] {{trans('_.TH฿/ticket')}}  </h4></div>
+						</div>
+						<div class="col-xs-12">
+						<div class="col-xs-6"><h4>{{trans('_.Child')}} {{trans('tour.(Age 5-11)')}}</h4></div>
+						<div class="col-xs-6"><h4>[[ tour.price_person_child]] {{trans('_.TH฿/ticket')}}</h4></div>
+						</div>
+
+						
 						<div class="col-xs-12">
 							<table>
-							<tr>
+								<tr>
 									<td>{{trans('_.Includes:')}}</td>
 									<td>&nbsp;</td>
 								</tr>
@@ -135,7 +104,7 @@
 								</tr>
 
 								<tr>
-									<td>- {{trans('_.Snack Pack')}}</td>									
+									<td>- {{trans('_.Snack Set')}}</td>									
 									<td>&nbsp;</td>
 								</tr>
 
@@ -158,11 +127,15 @@
 					
 
 					<div ng-if="tour && tour.price_type == 'package'" class="row detail @if($config['lang']['code'] == 'th') th @endif">
-						<div class="col-xs-5"><h4>{{trans('_.Price')}}</h4></div>
-						<div class="col-xs-7"><h4>[[ tour.price_package | number:2 ]] {{trans('_.THB/bundle ticket (3 passes)')}}</h4></div>
+						<div class="col-xs-12">
+						
+						<div class="col-xs-4"><h4>{{trans('_.Price')}}</h4></div>
+						<div class="col-xs-8"><h4>[[ tour.price_package ]] {{trans('_.TH฿/group ticket (max. 3 people)')}}</h4></div>
+					
+						</div>
 						<div class="col-xs-12">
 							<table>
-							<tr>
+								<tr>
 									<td>{{trans('_.Includes:')}}</td>
 									<td>&nbsp;</td>
 								</tr>
@@ -174,7 +147,7 @@
 								</tr>
 
 								<tr>
-									<td>- {{trans('_.Transport to and from your Phuket accommodation')}}</td>
+									<td>- {{trans('_.Private Transport to and from your Phuket accommodation')}}</td>
 									<td>&nbsp;</td>	
 																										
 								</tr>
@@ -189,7 +162,7 @@
 								</tr>
 
 								<tr>
-									<td>- {{trans('_.Snack Pack')}}</td>									
+									<td>- {{trans('_.High Tea Set')}}</td>									
 									<td>&nbsp;</td>
 								</tr>
 
@@ -219,8 +192,10 @@
 
 					
 					<div ng-if="tour && tour.price_type == 'free'" class="row detail @if($config['lang']['code'] == 'th') th @endif">
-						<div class="col-xs-5"><h4>{{trans('_.Price')}}</h4></div>
-						<div class="col-xs-7"><h4> 0.00 {{trans('_.THB')}} ({{trans('_.Free Transfer')}})</h4></div>
+						<div class="col-xs-12">
+						<div class="col-xs-6"><h4>{{trans('_.Price')}}</h4></div>
+						<div class="col-xs-6"><h4> 0 {{trans('_.TH฿')}} ({{trans('_.Free Transfer')}})</h4></div>
+						</div>
 
 						<div class="col-xs-12">
 							<table>
@@ -235,15 +210,15 @@
 																										
 								</tr>
 								
-								<tr>
+								<!-- <tr>
 									<td>- {{trans('_.Guided about pearls')}}</td>									
 									<td>&nbsp;</td>
-								</tr>
+								</tr> -->
 
-								<tr>
+								<!-- <tr>
 									<td>- {{trans('_.Find out our boutique and showroom.')}}</td>									
 									<td>&nbsp;</td>
-								</tr>
+								</tr> -->
 
 
 								<tr>
@@ -311,7 +286,7 @@
 							<table>
 								<tr class="total">
 									<td>{{trans('_.Total')}}</td>
-									<td>[[ input.total | number:2 ]] THB</td>
+									<td>[[ input.total  ]] THB</td>
 								</tr>
 							</table>
 						</div>
@@ -349,7 +324,7 @@
 							<table>
 								<tr class="total">
 									<td>{{trans('_.Total')}}</td>
-									<td>[[ input.total | number:2 ]] THB</td>
+									<td>[[ input.total ]] THB</td>
 								</tr>
 							</table>
 						</div>
@@ -386,7 +361,7 @@
 							<table>
 								<tr class="total">
 									<td>{{trans('_.Total')}}</td>
-									<td> 0.00 THB</td>
+									<td> 0 THB</td>
 								</tr>
 							</table>
 						</div>
@@ -408,6 +383,87 @@
 			</div>
 		</div>
 
+	</div>
+</div>
+<div class="home-tour" ng-controller="Tour">
+	<div class="container">
+	<br><br>
+		<div class="ui-tour-random row">
+			<!-- <div class="col-xs-12 text-center">
+				<div class="__head __light">
+					<div class="__title {{$config['lang']['code']}}">{{trans('_.Booking Tour')}}</div>
+					<img src="/static/images/home_line.png">
+				</div>
+			</div> -->
+			@foreach($tours as $index => $tour)
+			<?php $title_ = $tour->getTitle($config['lang']['code']) ?>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow zoomIn">
+				<div class="item @if($index == 3) visible-sm visible-xs @endif">
+					@if($tour->new == '1')
+					<div class="ribbon new">
+						<span>NEW</span>
+					</div>
+					@elseif($tour->popular == '1')
+					<div class="ribbon popular">
+						<span>POPULAR</span>
+					</div>
+					@elseif($tour->recommend == '1')
+					<div class="ribbon recommended">
+						<span>RECOMMEND</span>
+					</div>
+					@endif
+					<div class="images">
+						<a href="/tours/{{$tour->url}}.html">
+							<?php
+                                $source = '/static/images/image-placeholder-622-415.png';
+
+                                if ($tour->images->count() > 0){
+                                    $image  = $tour->images->get(0);
+                                    $source = "/app/tour/{$tour->tourid}/{$image->imageid}_t.png";
+                                }
+                            ?>
+								<div class="defer-image" ng-controller="DeferImage" image="{{$source}}" alt="{{$title_}}">
+									<div class="image-showing">
+										<img src="/static/images/preload-622-415.jpg" class="holder" alt="{{$title_}}">
+									</div>
+									<div class="is-loading" ng-class="{'hidden':loaded}"></div>
+								</div>
+								<div class="description">
+									<div class="price">
+										@if($tour->price_type == 'package')
+										<span class="amount">{{number_format($tour->price_package)}} THB</span>
+										<span class="type">{{trans('tour.price/bundle ticket')}}</span>
+										@elseif($tour->price_type == 'person')
+										<span class="amount">{{number_format($tour->price_person_adult)}} THB</span>
+										<span class="type">{{trans('tour.price/single ticket')}}</span>
+										@elseif($tour->price_type == 'free')
+										<span class="free">{{trans('tour.Free shuttle')}}</span>
+										@endif
+									</div>
+								</div>
+						</a>
+						<div class="previews">
+							<a href="#" ng-click="showTourPreview($event, '{{$tour->tourid}}')" alt="{{$title_}}">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</a>
+							@if($tour->images->count() > 0)
+							<div class="tour-preview hidden" data-plugin="light-gallery" data-preview-tourid="{{$tour->tourid}}">
+								@foreach($tour->images as $image)
+								<a href="/app/tour/{{$tour->tourid}}/{{$image->imageid}}.png" data-sub-html="{!! $title_ !!}" alt="{{$title_}}">
+									<img src="/app/tour/{{$tour->tourid}}/{{$image->imageid}}_t.png" class="img-responsive" alt="{{$title_}}">
+								</a>
+								@endforeach
+							</div>
+							@endif
+						</div>
+					</div>
+					<div class="info">
+						<div class="title">{!! str_limit($title_, $limit = 80, $end = '...') !!}</div>
+					</div>
+				</div>
+			</div>
+			@endforeach
+		</div>
 	</div>
 </div>
 <form action="{{$request->fullUrl()}}" method="post" class="hidden" id="checkoutForm">
@@ -500,86 +556,7 @@
 
 
 
-<div class="home-tour" ng-controller="Tour">
-	<div class="container">
-		<div class="ui-tour-random row">
-			<div class="col-xs-12 text-center">
-				<div class="__head __light">
-					<div class="__title {{$config['lang']['code']}}">{{trans('_.Booking Tour')}}</div>
-					<img src="/static/images/home_line.png">
-				</div>
-			</div>
-			@foreach($tours as $index => $tour)
-			<?php $title_ = $tour->getTitle($config['lang']['code']) ?>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow zoomIn">
-				<div class="item @if($index == 3) visible-sm visible-xs @endif">
-					@if($tour->new == '1')
-					<div class="ribbon new">
-						<span>NEW</span>
-					</div>
-					@elseif($tour->popular == '1')
-					<div class="ribbon popular">
-						<span>POPULAR</span>
-					</div>
-					@elseif($tour->recommend == '1')
-					<div class="ribbon recommended">
-						<span>RECOMMEND</span>
-					</div>
-					@endif
-					<div class="images">
-						<a href="/tours/{{$tour->url}}.html">
-							<?php
-                                $source = '/static/images/image-placeholder-622-415.png';
 
-                                if ($tour->images->count() > 0){
-                                    $image  = $tour->images->get(0);
-                                    $source = "/app/tour/{$tour->tourid}/{$image->imageid}_t.png";
-                                }
-                            ?>
-								<div class="defer-image" ng-controller="DeferImage" image="{{$source}}" alt="{{$title_}}">
-									<div class="image-showing">
-										<img src="/static/images/preload-622-415.jpg" class="holder" alt="{{$title_}}">
-									</div>
-									<div class="is-loading" ng-class="{'hidden':loaded}"></div>
-								</div>
-								<div class="description">
-									<div class="price">
-										@if($tour->price_type == 'package')
-										<span class="amount">{{number_format($tour->price_package)}} THB</span>
-										<span class="type">{{trans('tour.price/bundle ticket')}}</span>
-										@elseif($tour->price_type == 'person')
-										<span class="amount">{{number_format($tour->price_person_adult)}} THB</span>
-										<span class="type">{{trans('tour.price/single ticket')}}</span>
-										@elseif($tour->price_type == 'free')
-										<span class="free">{{trans('tour.Free shuttle')}}</span>
-										@endif
-									</div>
-								</div>
-						</a>
-						<div class="previews">
-							<a href="#" ng-click="showTourPreview($event, '{{$tour->tourid}}')" alt="{{$title_}}">
-								<i class="fa fa-picture-o" aria-hidden="true"></i>
-							</a>
-							@if($tour->images->count() > 0)
-							<div class="tour-preview hidden" data-plugin="light-gallery" data-preview-tourid="{{$tour->tourid}}">
-								@foreach($tour->images as $image)
-								<a href="/app/tour/{{$tour->tourid}}/{{$image->imageid}}.png" data-sub-html="{!! $title_ !!}" alt="{{$title_}}">
-									<img src="/app/tour/{{$tour->tourid}}/{{$image->imageid}}_t.png" class="img-responsive" alt="{{$title_}}">
-								</a>
-								@endforeach
-							</div>
-							@endif
-						</div>
-					</div>
-					<div class="info">
-						<div class="title">{!! str_limit($title_, $limit = 80, $end = '...') !!}</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
-		</div>
-	</div>
-</div>
 @endsection @section('foot')
 <script src="{{ $config['url'] }}/static/bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script>
 <script src="{{ $config['url'] }}/static/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
@@ -1205,4 +1182,5 @@
 	});
 });
 </script>
+
 @endsection

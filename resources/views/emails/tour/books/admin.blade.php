@@ -84,9 +84,10 @@ background-color: #f6f6f6;
         							</tr>
 									<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                         <td class="content-block" style="color: #222; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 8px 0 0 0; border-top: 1px solid #e9e9e9 !important;" valign="top">
-											{{$book->firstname}} {{$book->lastname}}
+											{{$book->firstname}} {{$book->lastname}},
+                                            &nbsp; {{$book->email}}
 											@if(trim($book->phone) != '')
-											, &nbsp;{{$book->phone}}
+											&nbsp; {{$book->phone}}
 											@endif
         								</td>
         							</tr>

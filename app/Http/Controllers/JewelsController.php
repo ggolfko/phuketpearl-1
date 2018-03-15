@@ -45,12 +45,11 @@ class JewelsController extends Controller {
                 {
                     $subject = $this->config['name'] . ' - Jewel enquiry';
 
-					Mail::queue('emails.enquiry', ['product' => $product, 'enquiry' => $enquiry, 'config' => $this->config], function($mail) use ($enquiry, $subject){
-						$mail->from($enquiry->email, $enquiry->fullname);
+                    Mail::queue('emails.enquiry', ['product' => $product, 'enquiry' => $enquiry, 'config' => $this->config], function($mail) use ($enquiry, $subject){
 						$mail->to(config('app.email'));
 						$mail->subject($subject);
 					});
-
+                    
 					session()->flash('enquiryCompleted', true);
 
                     $response['status']     = 'ok';

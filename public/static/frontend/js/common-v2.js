@@ -327,49 +327,6 @@ function scrollArray(elem, left, top, delay) {
  * Mouse wheel handler.
  * @param {Object} event
  */
-function wheel(event) {
-
-    if (!initDone) {
-        init();
-    }
-
-    var target = event.target;
-    var overflowing = overflowingAncestor(target);
-
-    // use default if there's no overflowing
-    // element or default action is prevented
-    if (!overflowing || event.defaultPrevented ||
-        isNodeName(activeElement, "embed") ||
-        (isNodeName(target, "embed") && /\.pdf/i.test(target.src))) {
-        return true;
-    }
-
-    var deltaX = event.wheelDeltaX || 0;
-    var deltaY = event.wheelDeltaY || 0;
-
-    // use wheelDelta if deltaX/Y is not available
-    if (!deltaX && !deltaY) {
-        deltaY = event.wheelDelta || 0;
-    }
-
-    // check if it's a touchpad scroll that should be ignored
-    if (!options.touchpadSupport && isTouchpad(deltaY)) {
-        return true;
-    }
-
-    // scale by step size
-    // delta is 120 most of the time
-    // synaptics seems to send 1 sometimes
-    if (Math.abs(deltaX) > 1.2) {
-        deltaX *= options.stepSize / 120;
-    }
-    if (Math.abs(deltaY) > 1.2) {
-        deltaY *= options.stepSize / 120;
-    }
-
-    scrollArray(overflowing, -deltaX, -deltaY);
-    event.preventDefault();
-}
 
 /**
  * Keydown event handler.
@@ -597,10 +554,3 @@ function pulse(x) {
     return pulse_(x);
 }
 
-if(!jQuery('body').hasClass('no-smooth-scroll')) {
-    if(!mobile && !ipad) {
-        addEvent("mousedown", mousedown);
-        addEvent("mousewheel", wheel);
-        addEvent("load", init);
-    }
-}
