@@ -123,6 +123,8 @@ return array(
     'Tour Booking' => 'การจองทัวร์',
     'Tour booking' => 'การจองทัวร์',
     'Booking Tour' => 'จองทัวร์ฟาร์ม',
+    'Booking' => 'การจอง',
+    'Book Now' => 'จองเลย',        
     'Contact us' => 'ติดต่อเรา',
     'Read more' => 'อ่านต่อ',
     'Adults' => 'ผู้ใหญ่',
@@ -246,6 +248,9 @@ return array(
     'Find out our boutique and showroom.' =>'Find out our boutique and showroom.',
     'Private Transport to and from your Phuket accommodation'=> 'รถส่วนตัวรับส่งจากที่พักภายในภูเก็ต',
     'TH฿/ticket' => 'บาท/ท่าน',
+
+    'With more than 40 years of experience on pearl farming.' => 'With more than 40 years of experience on pearl farming.',
+    'The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.' => 'The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.',
 
 
 );

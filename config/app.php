@@ -14,6 +14,11 @@ return [
 		   'code'	=> 'th',
 		   'title'	=> 'ภาษาไทย',
 		   'locale'	=> 'th_th'
+       ],
+       'ru' => [
+            'code'	=> 'ru',
+            'title'	=> 'русский язык',
+            'locale'	=> 'ru_ru'
        ]
 
 	],

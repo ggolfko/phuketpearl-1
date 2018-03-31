@@ -30,11 +30,11 @@
 	<div class="home-banner-wrapper">
 		<div class="container">
 			<div id="home-banner" class="text-center clearfix">
-				<img class="pulse img-banner-caption" src="/static/images/logo-200-100.png" alt="With more than 40 years of experience on pearl farming. The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.">
+				<img class="pulse img-banner-caption" src="/static/images/logo-200-100.png" alt="{{trans('_.With more than 40 years of experience on pearl farming.')}} {{trans('_.The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.')}}">
 				<div class="home-banner-caption">
 					<p style="color: #000000;">
-						With more than 40 years of experience on pearl farming.
-						<br> The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.
+					{{trans('_.With more than 40 years of experience on pearl farming.')}}
+						<br>{{trans('_.The knowledge of pearl farming and cultivation is inherited from our ancestor which passes down to new generation.')}} 
 					</p>
 				</div>
 			</div>

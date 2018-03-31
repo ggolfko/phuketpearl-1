@@ -183,7 +183,7 @@
             <!-- right column -->
             <div class="col-md-4">
                 <div class="book">
-                    <h3>- Booking -</h3>
+                    <h3>- {{trans('_.Booking')}} -</h3>
 
                     @if($tour->price_type == 'package')
                     <div class="row price-type @if($config['lang']['code'] == 'th') th @endif">
@@ -454,7 +454,7 @@
 
                     <div class="row">
                         <div class="col-lg-12 book-now">
-                            <button class="btn btn-primary btn-lg" ng-click="book()" ng-disabled="booking">Book Now</button>
+                            <button class="btn btn-primary btn-lg" ng-click="book()" ng-disabled="booking">	{{trans('_.Book Now')}}</button>
                         </div>
                     </div>
                 </div>
@@ -523,7 +523,7 @@
 
 				<div class="phone-contact">
                     <img src="/static/images/phone-contact.png">
-                    <div class="text">{{trans('tour.Contact us')}}</div>
+                    <div class="text">{{trans('_.Contact us')}}</div>
                     <div class="phone">{{$top_phone}}</div>
                     <div class="contact"><a href="/contactus.html" @if($config['lang']['code']) class="th" @endif>{{trans('tour.Contact us by other methods.')}}</a></div>
                 </div>
